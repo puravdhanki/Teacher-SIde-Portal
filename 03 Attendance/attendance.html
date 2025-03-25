@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Attendance Management</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="attendance.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h1>Student Management System</h1>
+        <div class="nav-links">
+            <a href="/01 Students Records/test.html">Students Records</a>
+            <a href="/03 Attendance/attendance.html" class="active">Attendance</a>
+            <a href="/02 Announcement/announcement.html">Announcements</a>
+            <a href="#">Class Dairy</a>
+            <a href="/04 Profile/profile.html">Profile Page</a>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <div class="header">
+            <h2>Attendance Records</h2>
+            <button id="addAttendanceBtn" class="btn">
+                <i class="fas fa-plus"></i> Take New Attendance
+            </button>
+        </div>
+        
+        <div class="filters">
+            <div class="filter-group">
+                <label for="attendanceDate">Date:</label>
+                <input type="date" id="attendanceDate">
+            </div>
+            <div class="filter-group">
+                <label for="subjectFilter">Subject:</label>
+                <select id="subjectFilter">
+                    <option value="">All Subjects</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Database Management">Database Management</option>
+                    <option value="Data Structures">Data Structures</option>
+                    <option value="Programming Fundamentals">Programming Fundamentals</option>
+                    <option value="Networking">Networking</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="departmentFilter">Department:</label>
+                <select id="departmentFilter">
+                    <option value="">All Departments</option>
+                    <option value="IT">IT</option>
+                    <option value="CS">CS</option>
+                    <option value="BMM">BMM</option>
+                    <option value="BCA">BCA</option>
+                    <option value="DA">DA</option>
+                </select>
+            </div>
+            <button id="applyFiltersBtn" class="btn">
+                <i class="fas fa-filter"></i> Apply Filters
+            </button>
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search by name or roll number...">
+            <button id="searchBtn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        
+        <div class="loader" id="loader"></div>
+        
+        <div class="attendance-summary">
+            <div class="summary-card">
+                <h4>Total Students</h4>
+                <p id="totalStudents">0</p>
+            </div>
+            <div class="summary-card">
+                <h4>Present</h4>
+                <p id="presentCount">0</p>
+            </div>
+            <div class="summary-card">
+                <h4>Absent</h4>
+                <p id="absentCount">0</p>
+            </div>
+            <div class="summary-card">
+                <h4>Attendance Rate</h4>
+                <p id="attendanceRate">0%</p>
+            </div>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll Number</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Subject</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="attendanceTableBody">
+                <!-- Data will be inserted dynamically here -->
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Take Attendance Modal -->
+    <div id="attendanceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Take Attendance</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="attendanceForm">
+                <div class="form-group">
+                    <label for="modalDate">Date</label>
+                    <input type="date" id="modalDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="modalSubject">Subject</label>
+                    <select id="modalSubject" required>
+                        <option value="">Select Subject</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Database Management">Database Management</option>
+                        <option value="Data Structures">Data Structures</option>
+                        <option value="Programming Fundamentals">Programming Fundamentals</option>
+                        <option value="Networking">Networking</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="modalDepartment">Department</label>
+                    <select id="modalDepartment" required>
+                        <option value="">Select Department</option>
+                        <option value="IT">IT</option>
+                        <option value="CS">CS</option>
+                        <option value="BMM">BMM</option>
+                        <option value="BCA">BCA</option>
+                        <option value="DA">DA</option>
+                    </select>
+                </div>
+                
+                <div class="student-list">
+                    <h4>Students</h4>
+                    <div id="studentCheckboxes">
+                        <!-- Student checkboxes will be added here dynamically -->
+                    </div>
+                </div>
+                
+                <div class="bulk-actions">
+                    <button type="button" class="btn mark-all-btn" id="markAllPresentBtn">Mark All Present</button>
+                    <button type="button" class="btn mark-all-btn" id="markAllAbsentBtn">Mark All Absent</button>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn cancel-btn" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn save-btn">Save Attendance</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Edit Attendance Modal -->
+    <div id="editAttendanceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Attendance</h3>
+                <span class="close edit-close">&times;</span>
+            </div>
+            <form id="editAttendanceForm">
+                <input type="hidden" id="editAttendanceId">
+                <div class="form-group">
+                    <label for="editName">Student Name</label>
+                    <input type="text" id="editName" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="editRoll">Roll Number</label>
+                    <input type="text" id="editRoll" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="editDep">Department</label>
+                    <input type="text" id="editDep" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="editSubject">Subject</label>
+                    <select id="editSubject" required>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Database Management">Database Management</option>
+                        <option value="Data Structures">Data Structures</option>
+                        <option value="Programming Fundamentals">Programming Fundamentals</option>
+                        <option value="Networking">Networking</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editStatus">Status</label>
+                    <select id="editStatus" required>
+                        <option value="Present">Present</option>
+                        <option value="Absent">Absent</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn cancel-btn" id="editCancelBtn">Cancel</button>
+                    <button type="submit" class="btn save-btn">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+    
+    <!-- Firebase SDK -->
+    <script type="module" src="attendance.js"></script>
+</body>
+</html>

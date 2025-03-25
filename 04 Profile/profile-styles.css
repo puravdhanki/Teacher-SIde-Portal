@@ -1,0 +1,229 @@
+/* Profile Page Styles */
+.profile-container {
+    display: flex;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.profile-picture-container {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+    border-right: 1px solid #eee;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.profile-picture i {
+    font-size: 5rem;
+    color: #999;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-picture-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.profile-details {
+    flex: 1;
+    padding: 2rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.subjects-container {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0.5rem;
+}
+
+.subject-tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    min-height: 2rem;
+}
+
+.subject-tag {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.subject-tag i {
+    cursor: pointer;
+}
+
+.add-subject-container {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.add-subject-container input {
+    flex: 1;
+    padding: 0.7rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* Authentication Styles */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px);
+}
+
+.auth-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 2rem;
+    width: 100%;
+    max-width: 450px;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.auth-header p {
+    color: #777;
+    margin-top: 0.5rem;
+}
+
+.auth-tabs {
+    display: flex;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.auth-tab {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #777;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.auth-tab.active {
+    color: #4CAF50;
+    border-bottom: 2px solid #4CAF50;
+}
+
+.auth-form {
+    margin-bottom: 1.5rem;
+}
+
+.auth-divider {
+    position: relative;
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+.auth-divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #eee;
+}
+
+.auth-divider span {
+    position: relative;
+    background-color: white;
+    padding: 0 1rem;
+    color: #777;
+}
+
+.google-btn {
+    width: 100%;
+    background-color: white;
+    color: #333;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.google-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.password-input {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+    }
+    
+    .profile-picture-container {
+        border-right: none;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcements - Student Management System</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="announcement.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h1>Student Management System</h1>
+        <div class="nav-links">
+            <a href="/01 Students Records/test.html">Students Records</a>
+            <a href="/03 Attendance/attendance.html">Attendence</a>
+            <a href="/02 Announcement/announcement.html" class="active">Announcements</a>
+            <a href="#">Class Dairy</a>
+            <a href="/04 Profile/profile.html">Profile Page</a>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <div class="header">
+            <h2>Announcements</h2>
+            <button id="createAnnouncementBtn" class="btn">
+                <i class="fas fa-plus"></i> Create New Announcement
+            </button>
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search announcements...">
+            <button id="searchBtn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        
+        <div class="loader" id="loader"></div>
+        
+        <!-- Announcements Container -->
+        <div id="announcementsContainer" class="announcements-container">
+            <!-- Announcements will be displayed here -->
+        </div>
+    </div>
+    
+    <!-- Create Announcement Modal -->
+    <div id="announcementModal" class="modal">
+        <div class="modal-content announcement-modal">
+            <div class="modal-header">
+                <h3 id="modalTitle">Create New Announcement</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="announcementForm">
+                <input type="hidden" id="announcementId">
+                <div class="form-group">
+                    <label for="title">Announcement Title</label>
+                    <input type="text" id="title" required placeholder="Enter announcement title">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" rows="5" required placeholder="Enter detailed announcement..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="fileUpload">Attach File (PDF, Word, JPG, etc.)</label>
+                    <div class="file-upload-container">
+                        <input type="file" id="fileUpload" class="file-input">
+                        <div class="file-upload-info">
+                            <span id="fileNameDisplay">No file selected</span>
+                            <button type="button" id="chooseFileBtn" class="btn">Choose File</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="uploadProgress" class="upload-progress-container">
+                    <div class="upload-progress-bar" id="progressBar"></div>
+                    <div class="upload-progress-text" id="progressText">0%</div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn cancel-btn" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn save-btn">Publish Announcement</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- View Announcement Modal -->
+    <!-- View Announcement Modal (Updated with Delete Button) -->
+    <div id="viewAnnouncementModal" class="modal">
+        <div class="modal-content view-announcement-modal">
+            <div class="modal-header">
+                <h3 id="viewAnnouncementTitle"></h3>
+                <div class="modal-actions">
+                    <button id="deleteAnnouncementBtn" class="btn delete-btn">
+                        <i class="fas fa-trash-alt"></i> Delete
+                    </button>
+                    <span class="close" id="closeViewModal">&times;</span>
+                </div>
+            </div>
+            <div class="view-announcement-content">
+                <div class="announcement-date" id="viewAnnouncementDate"></div>
+                <div class="announcement-description" id="viewAnnouncementDescription"></div>
+                <div class="announcement-attachment" id="viewAnnouncementAttachment">
+                    <!-- Attachment info will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Dialog -->
+    <div id="confirmDialog" class="confirm-dialog" style="display: none;">
+        <div class="confirm-dialog-content">
+            <div class="confirm-dialog-title">
+                <i class="fas fa-exclamation-triangle"></i> Delete Announcement
+            </div>
+            <div class="confirm-dialog-message">
+                Are you sure you want to delete this announcement? This action cannot be undone.
+            </div>
+            <div class="confirm-dialog-actions">
+                <button id="cancelDeleteBtn" class="btn cancel-btn">Cancel</button>
+                <button id="confirmDeleteBtn" class="btn delete-btn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+    
+    <!-- Firebase SDK -->
+    <script type="module" src="announcement.js"></script>
+</body>
+</html>

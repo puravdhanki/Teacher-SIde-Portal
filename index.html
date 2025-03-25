@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edumosaic Portal Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background">
+        <div class="shape shape1"></div>
+        <div class="shape shape2"></div>
+        <div class="shape shape3"></div>
+        <div class="shape shape4"></div>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h1>Welcome to Edumosaic</h1>
+            <p>Select your role to continue</p>
+        </div>
+        
+        <div class="login-options">
+            <div class="login-card teacher">
+                <div class="icon-container">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <h2>Teacher</h2>
+                <p>Access your classroom and teaching resources</p>
+                <button id="teacherLogin" class="btn">
+                    <span>Login as Teacher</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            
+            <div class="login-card student">
+                <div class="icon-container">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h2>Student</h2>
+                <p>Access your courses and learning materials</p>
+                <button id="studentLogin" class="btn">
+                    <span>Login as Student</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2025 Edumosaic. All rights reserved.</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

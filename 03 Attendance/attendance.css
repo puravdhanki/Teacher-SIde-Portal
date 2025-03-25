@@ -1,0 +1,185 @@
+/* Attendance Page Specific Styles */
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 1.5rem;
+    align-items: flex-end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 150px;
+}
+
+.filter-group label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.filter-group input,
+.filter-group select {
+    padding: 0.7rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.attendance-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.summary-card {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+}
+
+.summary-card h4 {
+    color: #555;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.summary-card p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #4CAF50;
+}
+
+.summary-card:nth-child(3) p {
+    color: #f44336;
+}
+
+.status-present {
+    color: #4CAF50;
+    font-weight: 500;
+}
+
+.status-absent {
+    color: #f44336;
+    font-weight: 500;
+}
+
+.toggle-status {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.mark-present {
+    background-color: #e8f5e9;
+    color: #4CAF50;
+}
+
+.mark-present:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.mark-absent {
+    background-color: #ffebee;
+    color: #f44336;
+}
+
+.mark-absent:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+.student-list {
+    margin-top: 1.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+.student-list h4 {
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.student-checkbox {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.student-checkbox:last-child {
+    border-bottom: none;
+}
+
+.student-checkbox input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+.student-checkbox label {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    cursor: pointer;
+}
+
+.student-checkbox .student-info {
+    display: flex;
+    gap: 1rem;
+}
+
+.bulk-actions {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+
+.mark-all-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+#markAllPresentBtn {
+    background-color: #4CAF50;
+}
+
+#markAllAbsentBtn {
+    background-color: #f44336;
+}
+
+@media (max-width: 768px) {
+    .filters {
+        flex-direction: column;
+    }
+    
+    .filter-group {
+        width: 100%;
+    }
+    
+    .attendance-summary {
+        flex-direction: column;
+    }
+    
+    .summary-card {
+        width: 100%;
+    }
+}

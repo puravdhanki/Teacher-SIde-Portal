@@ -1,0 +1,641 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.navbar {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.search-bar {
+    display: flex;
+    margin-bottom: 1.5rem;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 0.7rem;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    font-size: 1rem;
+}
+
+.search-bar button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0 1rem;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 500;
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f2f2f2;
+}
+
+.action-links {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.action-links button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.edit-btn {
+    color: #2196F3;
+}
+
+.delete-btn {
+    color: #f44336;
+}
+
+.status-active {
+    color: #4CAF50;
+    font-weight: 500;
+}
+
+.status-inactive {
+    color: #f44336;
+    font-weight: 500;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.close {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #777;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.cancel-btn {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.save-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Toast notification */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: none;
+    z-index: 1001;
+}
+
+/* Loading spinner */
+.loader {
+    display: none;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #4CAF50;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 2rem auto;
+}
+
+
+/* Announcement specific styles */
+.announcements-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.announcement-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.announcement-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.announcement-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.announcement-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.announcement-date {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.announcement-preview {
+    color: #555;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.announcement-attachment-preview {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #4CAF50;
+    font-size: 0.9rem;
+}
+
+.announcement-attachment-icon {
+    color: #4CAF50;
+}
+
+/* Modal styles for announcement creation */
+.announcement-modal {
+    max-width: 600px;
+    width: 90%;
+}
+
+.view-announcement-modal {
+    max-width: 700px;
+    width: 90%;
+}
+
+.view-announcement-content {
+    padding: 1rem 0;
+}
+
+#description {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
+}
+
+.file-upload-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-upload-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+#fileNameDisplay {
+    color: #777;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 1rem;
+}
+
+/* Upload Progress Bar */
+.upload-progress-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    height: 20px;
+    position: relative;
+    display: none;
+}
+
+.upload-progress-bar {
+    height: 100%;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.upload-progress-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    line-height: 20px;
+    font-size: 0.8rem;
+    color: white;
+    text-shadow: 0 0 2px rgba(0,0,0,0.5);
+}
+
+/* View announcement specific styles */
+.view-announcement-description {
+    white-space: pre-line;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.announcement-attachment {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.attachment-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.attachment-icon {
+    font-size: 2rem;
+    color: #4CAF50;
+}
+
+.attachment-details {
+    flex: 1;
+}
+
+.attachment-name {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.attachment-meta {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.download-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.download-btn:hover {
+    background-color: #45a049;
+}
+
+.no-attachment-message {
+    color: #777;
+    font-style: italic;
+}
+
+.pdf-preview {
+    width: 100%;
+    height: 500px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+.image-preview {
+    max-width: 100%;
+    max-height: 500px;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+/* No announcements message */
+.no-announcements {
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    color: #777;
+}
+
+.no-announcements i {
+    font-size: 3rem;
+    color: #ddd;
+    margin-bottom: 1rem;
+}
+
+.no-announcements p {
+    margin-bottom: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .announcement-header {
+        flex-direction: column;
+    }
+    
+    .file-upload-info {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+    
+    .attachment-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .download-btn {
+        margin-top: 1rem;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    
+    .nav-links {
+        margin-top: 1rem;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+    
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+
+/* Add these styles to your announcement.css file */
+
+/* Delete button styling on cards */
+.announcement-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.delete-announcement-btn {
+    background-color: transparent;
+    border: none;
+    color: #f44336;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.delete-announcement-btn:hover {
+    background-color: rgba(244, 67, 54, 0.1);
+}
+
+/* Delete button in view modal */
+.view-announcement-modal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Confirmation dialog styling (optional enhancement) */
+.confirm-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm-dialog-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.confirm-dialog-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #f44336;
+}
+
+.confirm-dialog-message {
+    margin-bottom: 1.5rem;
+}
+
+.confirm-dialog-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
